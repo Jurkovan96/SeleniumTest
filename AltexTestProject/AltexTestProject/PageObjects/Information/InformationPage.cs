@@ -36,17 +36,41 @@ namespace AltexTestProject.PageObjects.Information
         private By Save = By.CssSelector("div[class*=lg-u] button[type=submit]");
         public IWebElement BtnSave => driver.FindElement(Save);
 
+        public By SuccessffullyEdit = By.CssSelector("div[class=flex-grow]");
+        public IWebElement LblSuccessffullyEdit => driver.FindElement(SuccessffullyEdit);
+
         public void EditInfo(InformationBO informationBO) {
             WaitHelpers.WaitElementToBeVisible(driver, Save);
-            TxtFirstName.Clear();
-            //TxtFirstName.SendKeys(informationBO.FirstName);
-            TxtLastName.Clear();
-            //TxtLastName.SendKeys(informationBO.LastName);
-            //TxtTelephone.Clear();
-            //TxtTelephone.SendKeys(informationBO.Telephone);
-            //TxtEmail.Clear();            
-            //TxtEmail.SendKeys(informationBO.Email);
+            ClearData(informationBO);
+            
+            TxtFirstName.SendKeys(informationBO.FirstName);
+            TxtLastName.SendKeys(informationBO.LastName);
+
             BtnSave.Click();
+        }
+
+        public void EditInfoBack(InformationBO informationBO)
+        {            
+            WaitHelpers.WaitElementToBeVisible(driver, Save);
+            ClearData(informationBO);
+
+            TxtFirstName.SendKeys("Test");
+            TxtLastName.SendKeys("Test");
+
+            BtnSave.Click();
+        }
+
+        public void ClearData(InformationBO informationBO)
+        {
+            for (int i = 0; i < informationBO.FirstName.Length; i++)
+            {
+                TxtFirstName.SendKeys(Keys.Backspace);
+            }
+
+            for (int i = 0; i < informationBO.LastName.Length; i++)
+            {
+                TxtLastName.SendKeys(Keys.Backspace);
+            }
         }
 
     }

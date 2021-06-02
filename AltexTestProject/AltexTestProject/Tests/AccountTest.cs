@@ -35,20 +35,14 @@ namespace AltexTestProject.Tests
         {
             var informationBO = new InformationBO();
             informationPage.EditInfo(informationBO);
-            WaitHelpers.WaitElementToBeVisible(driver, informationPage.FirstName);
-            
-            Assert.AreEqual("First Name", informationBO.FirstName);
-
+            WaitHelpers.WaitElementToBeVisible(driver, informationPage.SuccessffullyEdit);
+            Assert.AreEqual(informationPage.LblSuccessffullyEdit.Text, "Utilizator salvat cu succes");
+            informationPage.EditInfoBack(informationBO);
         }
 
         [TestCleanup]
         public void CleanUp()
         {
-            var informationBO = new InformationBO() { 
-            FirstName = "Test",
-            LastName = "Test"
-            };
-            informationPage.EditInfo(informationBO);
             driver.Quit();
         }
     }
