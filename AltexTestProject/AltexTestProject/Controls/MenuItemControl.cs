@@ -40,8 +40,11 @@ namespace AltexTestProject.Controls
     public class LoggedInMenuItemControl : MenuItemControl
     {
         public LoggedInMenuItemControl(IWebDriver browser) : base(browser)
-        {
+        { 
         }
+
+        public By Products = By.CssSelector("a[href*=produse]");
+        public IWebElement BtnProducts => driver.FindElement(Products);
 
         public By Firstname = By.CssSelector("a span[class*=jsx]");
         public IWebElement LblFirstname => driver.FindElement(Firstname);
