@@ -38,6 +38,7 @@ namespace AltexTestProject.Tests
             WaitHelpers.WaitElementToBeVisible(driver, informationPage.SuccessffullyEdit);
             Assert.AreEqual(informationPage.LblSuccessffullyEdit.Text, "Utilizator salvat cu succes");
             informationPage.EditInfoBack(informationBO);
+
         }
 
         [TestCleanup]

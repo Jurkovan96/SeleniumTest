@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AltexTestProject.PageObjects.Information.InputData;
 using AltexTestProject.Utils;
@@ -56,8 +57,9 @@ namespace AltexTestProject.PageObjects.Information
 
             TxtFirstName.SendKeys("Test");
             TxtLastName.SendKeys("Test");
-
+            Thread.Sleep(2000);
             BtnSave.Click();
+            Thread.Sleep(2000);
         }
 
         public void ClearData(InformationBO informationBO)
