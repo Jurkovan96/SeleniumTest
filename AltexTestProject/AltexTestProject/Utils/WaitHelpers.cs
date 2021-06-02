@@ -7,7 +7,7 @@ namespace AltexTestProject.Utils
 {
     public static class WaitHelpers
     {
-        public static void WaitElementToBeVisible(IWebDriver driver, By by, int timeSpan = 100)
+        public static void WaitElementToBeVisible(IWebDriver driver, By by, int timeSpan = 30)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeSpan));
             wait.Until(ExpectedConditions.ElementIsVisible(by));

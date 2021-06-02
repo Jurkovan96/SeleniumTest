@@ -30,6 +30,9 @@ namespace AltexTestProject.PageObjects.Login
         private By Cookies = By.CssSelector("button[class*=Button--primary]");
         private IWebElement BtnCookies => driver.FindElement(Cookies);
 
+        public By InvalidEmail = By.CssSelector("div[class=\"Form-validate is-active\"] div[class=Form-validate-message]");
+
+        public IWebElement LblInvalidEmail => driver.FindElement(InvalidEmail);
 
         public SummaryPage login(string email, string password)
         {

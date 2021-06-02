@@ -27,15 +27,24 @@ namespace AltexTestProject.Tests
             loginPage = new LoginPage(driver);         
         }
 
-        
-
         [TestMethod]
         public void Should_login_successfully_with_valid_credentials()
         {
-            var summaryPage = loginPage.login("apostolvlad98@gmail.com", "engleza90.");
+            var summaryPage = loginPage.login("test1234@test1234.ro", "test1234");
             WaitHelpers.WaitElementToBeVisible(driver, summaryPage.Firstname);
-            Assert.AreEqual(summaryPage.lblFirstname.Text, "Salut Example Example");
+            Assert.AreEqual(summaryPage.lblFirstname.Text, "Salut Test Test");
+           
         }
+
+        [TestMethod]
+        public void Should_fail_login_with_invalid_email_address()
+        {
+            var summaryPage = loginPage.login("aaaaaaa", "ceva");
+            WaitHelpers.WaitElementToBeVisible(driver, loginPage.InvalidEmail);
+            Assert.AreEqual(loginPage.LblInvalidEmail.Text, "Adresa de email invalida");
+
+        }
+
         [TestCleanup]
         public void CleanUp()
         {
