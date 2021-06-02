@@ -31,7 +31,7 @@ namespace AltexTestProject.Tests
         }
 
         [TestMethod]
-        public void Should__successfully_edit_account_info()
+        public void Should__successfully_edit_firstName_and_lastName_info()
         {
             var informationBO = new InformationBO();
             informationPage.EditInfo(informationBO);
@@ -40,6 +40,15 @@ namespace AltexTestProject.Tests
             informationPage.EditInfoBack(informationBO);
 
         }
+
+        [TestMethod]
+        public void Should__fail_edit_invalid_email()
+        {
+            var informationBO = new InformationBO();
+            informationPage.EditEmail("Test@aaa.com");
+            WaitHelpers.WaitElementToBeVisible(driver, informationPage.InvalidEmail);
+            Assert.AreEqual(informationPage.LblInvalidEmail.Text, "Adresa de email invalida");
+         }
 
         [TestCleanup]
         public void CleanUp()

@@ -40,6 +40,10 @@ namespace AltexTestProject.PageObjects.Information
         public By SuccessffullyEdit = By.CssSelector("div[class=flex-grow]");
         public IWebElement LblSuccessffullyEdit => driver.FindElement(SuccessffullyEdit);
 
+        public By InvalidEmail = By.CssSelector("div[class=\"Form-validate is-active\"] div[class=Form-validate-message]");
+
+        public IWebElement LblInvalidEmail => driver.FindElement(InvalidEmail);
+
         public void EditInfo(InformationBO informationBO) {
             WaitHelpers.WaitElementToBeVisible(driver, Save);
             ClearData(informationBO);
@@ -61,6 +65,12 @@ namespace AltexTestProject.PageObjects.Information
             BtnSave.Click();
             Thread.Sleep(2000);
         }
+
+        public void EditEmail(string email) {
+            WaitHelpers.WaitElementToBeVisible(driver, Save);
+            TxtEmail.SendKeys(email);
+            BtnSave.Click();
+           }
 
         public void ClearData(InformationBO informationBO)
         {
