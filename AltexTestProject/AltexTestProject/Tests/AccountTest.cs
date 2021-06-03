@@ -31,7 +31,7 @@ namespace AltexTestProject.Tests
         }
 
         [TestMethod]
-        public void Should__successfully_edit_firstName_and_lastName_info()
+        public void Should_successfully_edit_firstName_and_lastName_info()
         {
             var informationBO = new InformationBO();
             informationPage.EditInfo(informationBO);
@@ -42,7 +42,7 @@ namespace AltexTestProject.Tests
         }
 
         [TestMethod]
-        public void Should__fail_edit_invalid_email()
+        public void Should_fail_edit_invalid_email()
         {
             var informationBO = new InformationBO();
             informationPage.EditEmail("Test@aaa.com");

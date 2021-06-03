@@ -42,6 +42,30 @@ namespace AltexTestProject.Tests
 
         }
 
+        [TestMethod]
+        public void Should_apply_selected_filtre_to_accessories()
+        {
+            productsPage.NavigateToAccessories();
+            productsPage.FilterAccessories();
+            WaitHelpers.WaitElementToBeVisible(driver, productsPage.FilterCategoryResult);
+            Assert.AreEqual(productsPage.LblFilterCategoryResult.Text, "General: Promotii");
+            WaitHelpers.WaitElementToBeVisible(driver, productsPage.FilterBrandResult);
+            Assert.AreEqual(productsPage.LblFilterBrandResult.Text, "Brand: SAMSUNG");
+        }
+
+        [TestMethod]
+        public void Should_delete_applied_selected_filtre_to_accessories()
+        {
+            productsPage.NavigateToAccessories();
+            productsPage.FilterAccessories();
+            WaitHelpers.WaitElementToBeVisible(driver, productsPage.DeleteFilter);
+            productsPage.BtnDeleteFilter.Click();
+
+            WaitHelpers.WaitElementToBeVisible(driver, productsPage.SelectedCategory);
+            Assert.AreEqual(productsPage.LblSelectedCategory.Text, "Huse telefon");
+        }
+
+
         [TestCleanup]
         public void CleanUp()
         {
