@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading;
 using AltexTestProject.PageObjects.Login;
+using AltexTestProject.PageObjects.Products;
 using AltexTestProject.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -40,11 +42,19 @@ namespace AltexTestProject.Controls
     public class LoggedInMenuItemControl : MenuItemControl
     {
         public LoggedInMenuItemControl(IWebDriver browser) : base(browser)
-        { 
+        {
         }
 
         public By Products = By.CssSelector("a[href*=produse]");
         public IWebElement BtnProducts => driver.FindElement(Products);
+
+        public ProductsPage OpenProductsPage()
+        {
+            WaitHelpers.WaitElementToBeClickable(driver, Products);
+            Thread.Sleep(16000);
+            BtnProducts.Click();
+            return new ProductsPage(driver);
+        }
 
         public By Firstname = By.CssSelector("a span[class*=jsx]");
         public IWebElement LblFirstname => driver.FindElement(Firstname);

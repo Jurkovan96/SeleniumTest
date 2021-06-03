@@ -24,7 +24,7 @@ namespace AltexTestProject.Tests
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://altex.ro/cont/intra/");
-            loginPage = new LoginPage(driver);         
+            loginPage = new LoginPage(driver);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace AltexTestProject.Tests
             var summaryPage = loginPage.login("test1234@test1234.ro", "test1234");
             WaitHelpers.WaitElementToBeVisible(driver, summaryPage.Firstname);
             Assert.AreEqual(summaryPage.lblFirstname.Text, "Salut Test Test");
-           
+
         }
 
         [TestMethod]

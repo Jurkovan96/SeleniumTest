@@ -10,11 +10,10 @@ namespace AltexTestProject.PageObjects.Home
     public class HomePage
     {
         private IWebDriver driver;
-        public HomePage(IWebDriver browser) 
+        public HomePage(IWebDriver browser)
         {
             driver = browser;
         }
-        
-        
+
     }
 }

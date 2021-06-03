@@ -48,7 +48,7 @@ namespace AltexTestProject.Tests
             informationPage.EditEmail("Test@aaa.com");
             WaitHelpers.WaitElementToBeVisible(driver, informationPage.InvalidEmail);
             Assert.AreEqual(informationPage.LblInvalidEmail.Text, "Adresa de email invalida");
-         }
+        }
 
         [TestCleanup]
         public void CleanUp()

@@ -12,5 +12,11 @@ namespace AltexTestProject.Utils
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeSpan));
             wait.Until(ExpectedConditions.ElementIsVisible(by));
         }
+
+        public static void WaitElementToBeClickable(IWebDriver driver, By by, int timeSpan = 30)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeSpan));
+            wait.Until(ExpectedConditions.ElementToBeClickable(by));
+        }
     }
 }
