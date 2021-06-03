@@ -60,6 +60,7 @@ namespace AltexTestProject.Controls
         public ProductsPage OpenProductsPage()
         {
             WaitHelpers.WaitElementToBeClickable(driver, Products);
+            Thread.Sleep(8000);//Element is visible but page make a refresh and with this Thread.Sleep wait for refresh. We know it's a bad practice :(
             BtnProducts.Click();
             return new ProductsPage(driver);
         }
