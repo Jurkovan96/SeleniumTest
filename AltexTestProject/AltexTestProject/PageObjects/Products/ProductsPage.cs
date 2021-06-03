@@ -42,6 +42,39 @@ namespace AltexTestProject.PageObjects.Products
         public By DeleteFilter => By.CssSelector("a[title=\"Sterge tot\"]");
         public IWebElement BtnDeleteFilter => driver.FindElement(DeleteFilter);
 
+        private By SortList => By.XPath("/html/body/div[2]/div[2]/main/div[2]/div[1]/div[2]/div[1]/div/div/div/div[1]/div[1]/div/select/option");
+        public IList<IWebElement> LstSort => driver.FindElements(SortList);
+
+        private By DisplayList => By.XPath("//*[@id=\"__next\"]/div[2]/main/div[2]/div[1]/div[2]/div[1]/div/div/div/div[1]/div[2]/div/select/option");
+        public IList<IWebElement> LstDisplay => driver.FindElements(DisplayList);
+
+        public By SortFirstResult => By.XPath("//a[@class='Product-name js-ProductClickListener'][contains(text(),'Carcasa APPLE pentru iPhone 11 Pro Max, MWYW2ZM/A,')]");
+        public IWebElement LblSortFirstResult => driver.FindElement(SortFirstResult);
+        
+
+        public void SortAccessories()
+        {
+            WaitHelpers.WaitElementToBeVisible(driver, SortList);
+            foreach (var sortAccessories in LstSort)
+            {
+                if (sortAccessories.Text.Equals("Nume"))
+                {
+                    sortAccessories.Click();
+                    break;
+                }
+            }
+            Thread.Sleep(2000);
+            WaitHelpers.WaitElementToBeVisible(driver, DisplayList);
+            foreach (var display in LstDisplay)
+            {
+                if (display.Text.Equals("Lista"))
+                {
+                    display.Click();
+                    break;
+                }
+            }
+        }
+
         public void FilterAccessories()
         {
             WaitHelpers.WaitElementToBeVisible(driver, FilterCategoryList);

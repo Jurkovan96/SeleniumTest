@@ -65,6 +65,15 @@ namespace AltexTestProject.Tests
             Assert.AreEqual(productsPage.LblSelectedCategory.Text, "Huse telefon");
         }
 
+        [TestMethod]
+        public void Should_sort_selected_accessories()
+        {
+            productsPage.NavigateToAccessories();
+            productsPage.SortAccessories();
+
+            WaitHelpers.WaitElementToBeVisible(driver, productsPage.SortFirstResult);
+            Assert.AreEqual(productsPage.LblSortFirstResult.Text, "Carcasa APPLE pentru iPhone 11 Pro Max, MWYW2ZM/A, silicon, Midnight Blue");
+        }
 
         [TestCleanup]
         public void CleanUp()

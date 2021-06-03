@@ -51,7 +51,7 @@ namespace AltexTestProject.Controls
         public ProductsPage OpenProductsPage()
         {
             WaitHelpers.WaitElementToBeClickable(driver, Products);
-            Thread.Sleep(16000);
+            Thread.Sleep(8000);
             BtnProducts.Click();
             return new ProductsPage(driver);
         }
