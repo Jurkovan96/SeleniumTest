@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using AltexTestProject.PageObjects.Home;
 using AltexTestProject.PageObjects.Login;
 using AltexTestProject.PageObjects.Products;
 using AltexTestProject.Utils;
@@ -18,8 +19,16 @@ namespace AltexTestProject.Controls
             driver = browser;
         }
 
-        private By home = By.CssSelector("");
-        public IWebElement BtnHome => driver.FindElement(home);
+        private By HomePage = By.CssSelector("a[title='Electronice si electrocasnice - 2x Diferenta*']");
+        public IWebElement BtnHomePage => driver.FindElement(HomePage);
+
+        public HomePage GoToHomePage()
+        {
+            WaitHelpers.WaitElementToBeVisible(driver, HomePage);
+            Thread.Sleep(8000);//Element is visible but page make a refresh and with this Thread.Sleep wait for refresh. We know it's a bad practice :(
+            BtnHomePage.Click();
+            return new HomePage(driver);
+        }
     }
 
     public class LoggedOutMenuItemControl : MenuItemControl
@@ -51,7 +60,6 @@ namespace AltexTestProject.Controls
         public ProductsPage OpenProductsPage()
         {
             WaitHelpers.WaitElementToBeClickable(driver, Products);
-            Thread.Sleep(8000);
             BtnProducts.Click();
             return new ProductsPage(driver);
         }

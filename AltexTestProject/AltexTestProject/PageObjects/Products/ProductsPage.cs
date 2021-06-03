@@ -50,7 +50,16 @@ namespace AltexTestProject.PageObjects.Products
 
         public By SortFirstResult => By.XPath("//a[@class='Product-name js-ProductClickListener'][contains(text(),'Carcasa APPLE pentru iPhone 11 Pro Max, MWYW2ZM/A,')]");
         public IWebElement LblSortFirstResult => driver.FindElement(SortFirstResult);
-        
+
+        private By FirstItem => By.XPath("/html/body/div[2]/div[2]/main/div[2]/div[1]/div[2]/ul/li[1]/div/div[1]/a");
+        public IWebElement BtnFirstItem => driver.FindElement(FirstItem);
+
+        public IndividualProductPage GoToProductPage()
+        {
+            WaitHelpers.WaitElementToBeVisible(driver, FirstItem);
+            BtnFirstItem.Click();
+            return new IndividualProductPage(driver);
+        }
 
         public void SortAccessories()
         {
@@ -63,7 +72,7 @@ namespace AltexTestProject.PageObjects.Products
                     break;
                 }
             }
-            Thread.Sleep(2000);
+            Thread.Sleep(2000);//Element is visible but page make a refresh and with this Thread.Sleep wait for refresh. We know it's a bad practice :(
             WaitHelpers.WaitElementToBeVisible(driver, DisplayList);
             foreach (var display in LstDisplay)
             {
@@ -77,7 +86,7 @@ namespace AltexTestProject.PageObjects.Products
 
         public void FilterAccessories()
         {
-            WaitHelpers.WaitElementToBeVisible(driver, FilterCategoryList);
+            WaitHelpers.WaitElementToBeVisible(driver, FilterCategoryList, 300);
             foreach (var filterCategory in LstFilterCategory)
             {
                 if (filterCategory.Text.Equals("Promotii (313)"))
@@ -86,8 +95,8 @@ namespace AltexTestProject.PageObjects.Products
                     break;
                 }
             }
-            Thread.Sleep(2000);
-            WaitHelpers.WaitElementToBeVisible(driver, FilterBrandList);
+            Thread.Sleep(2000);//Element is visible but page make a refresh and with this Thread.Sleep wait for refresh. We know it's a bad practice :(
+            WaitHelpers.WaitElementToBeVisible(driver, FilterBrandList, 300);
             foreach (var filterBrand in LstFilterBrand)
             {
                 if (filterBrand.Text.Equals("SAMSUNG (232)"))

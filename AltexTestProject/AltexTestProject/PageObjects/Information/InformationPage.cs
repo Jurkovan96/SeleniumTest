@@ -57,9 +57,9 @@ namespace AltexTestProject.PageObjects.Information
 
             TxtFirstName.SendKeys("Test");
             TxtLastName.SendKeys("Test");
-            Thread.Sleep(2000);
+            Thread.Sleep(2000);//Element is visible but page make a refresh and with this Thread.Sleep wait for refresh. We know it's a bad practice :(
             BtnSave.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(2000);//Element is visible but page make a refresh and with this Thread.Sleep wait for refresh. We know it's a bad practice :(
         }
 
         public void EditEmail(string email)

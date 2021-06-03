@@ -1,5 +1,6 @@
 ﻿using AltexTestProject.Controls;
 using AltexTestProject.PageObjects.Address;
+using AltexTestProject.PageObjects.Home;
 using AltexTestProject.PageObjects.Information;
 using AltexTestProject.Utils;
 using OpenQA.Selenium;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AltexTestProject.PageObjects.Summary
@@ -43,5 +45,7 @@ namespace AltexTestProject.PageObjects.Summary
         }
 
         public LoggedInMenuItemControl loggedInMenuItemControl => new LoggedInMenuItemControl(driver);
+
+        public MenuItemControl menuItemControl => new MenuItemControl(driver);
     }
 }

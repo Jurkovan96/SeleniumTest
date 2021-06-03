@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AltexTestProject.PageObjects.Login
@@ -42,6 +43,7 @@ namespace AltexTestProject.PageObjects.Login
             BtnCookies.Click();
             BtnLogIn.Click();
             return new SummaryPage(driver);
+            Thread.Sleep(8000);//Element is visible but page make a refresh and with this Thread.Sleep wait for refresh. We know it's a bad practice :(
         }
     }
 }
